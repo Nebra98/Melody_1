@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 28, 2020 at 03:48 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1
+-- Generation Time: Aug 20, 2020 at 08:37 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,6 +32,22 @@ CREATE TABLE `albums` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cover_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -69,14 +84,15 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(61, '2014_10_12_000000_create_users_table', 1),
-(62, '2014_10_12_100000_create_password_resets_table', 1),
-(63, '2019_08_19_000000_create_failed_jobs_table', 1),
-(64, '2020_03_21_200529_create_roles_table', 1),
-(65, '2020_03_21_200756_create_role_user_table', 1),
-(66, '2020_03_22_163316_create_foreign_keys_for_role_user_table', 1),
-(67, '2020_03_22_185600_create_albums_table', 1),
-(68, '2020_03_22_190109_create_photos_table', 1);
+(69, '2014_10_12_000000_create_users_table', 1),
+(70, '2014_10_12_100000_create_password_resets_table', 1),
+(71, '2019_08_19_000000_create_failed_jobs_table', 1),
+(72, '2020_03_21_200529_create_roles_table', 1),
+(73, '2020_03_21_200756_create_role_user_table', 1),
+(74, '2020_03_22_163316_create_foreign_keys_for_role_user_table', 1),
+(75, '2020_03_22_185600_create_albums_table', 1),
+(76, '2020_03_22_190109_create_photos_table', 1),
+(77, '2020_08_20_143800_create_contacts_table', 2);
 
 -- --------------------------------------------------------
 
@@ -89,6 +105,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('bulicbrane561@gmail.com', '$2y$10$zQTPMA3IoXAuTZPD.W14p.J8Q1CI0uw210DOB3uHc8k4SpinL/5bW', '2020-08-20 16:14:09');
 
 -- --------------------------------------------------------
 
@@ -149,7 +172,7 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, NULL, NULL);
+(39, 1, 6, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -179,7 +202,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `password`, `facebook`, `instagram`, `youtube`, `avatar`, `about`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'Admin', 'admin@admin.com', NULL, '$2y$10$K8fZsw5TClcM0kHwxGwIC.TU/XcH3q1t/.10kaHMk7MikFzwQ5ix.', 'nebra.98', 'nebra561', 'NEBRA', '1585356306.jpg', 'Dobrodosli na moj kanal', NULL, '2020-03-27 22:41:52', '2020-03-28 01:27:38');
+(6, 'Admin', 'Admin', 'admin@admin.com', NULL, '$2y$10$Ec0yTF2ASIUUej6gn7KrkuqKY5MBkncYxJ1i4QEKsnKpMIaakTb62', 'nebra.98', NULL, NULL, 'default.png', 'Ovo je moj profil', NULL, '2020-05-22 15:11:54', '2020-06-05 21:30:10');
 
 --
 -- Indexes for dumped tables
@@ -191,6 +214,12 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `p
 ALTER TABLE `albums`
   ADD PRIMARY KEY (`id`),
   ADD KEY `albums_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -247,7 +276,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `albums`
 --
 ALTER TABLE `albums`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -259,13 +294,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -277,13 +312,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_user`
 --
 ALTER TABLE `role_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -299,7 +334,7 @@ ALTER TABLE `albums`
 -- Constraints for table `photos`
 --
 ALTER TABLE `photos`
-  ADD CONSTRAINT `photos_album_id_foreign` FOREIGN KEY (`album_id`) REFERENCES `albums` (`id`),
+  ADD CONSTRAINT `photos_album_id_foreign` FOREIGN KEY (`album_id`) REFERENCES `albums` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `photos_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --

@@ -19,7 +19,8 @@
     <div class="text-center">
         <h1>{{$album->name}}</h1>
         <a href="{{ route('albums.index') }}" class="button secondary">Nazad</a>
-        <a href="{{ url('photos/create/' . $album->id) }}" class="button">Prenesite novu stavku u album</a>
+
+        <a href="{{ url('photos/create/' . $album->id) }}" class="btn btn-primary" role="button">Prenesite novu stavku u album</a>
     </div>
     <hr>
     <h3 class="text-center">Glazba</h3>
@@ -46,14 +47,17 @@
                                         <div class="col-12">
                                             <div class="single-song-area mb-30 d-flex flex-wrap align-items-end">
                                                 <div class="song-thumbnail">
-                                                    <img src="/uploads/songs_and_cover_images/{{ $file->coverImage }} " alt="">
+
+                                                    <img src="{{url('storage/uploads/songs_and_cover_images/'.$file->coverImage)}}">
+
                                                 </div>
                                                 <div class="song-play-area">
                                                     <div class="song-name">
                                                         <p>{{++$count}}. {{$file->artistName}} - {{$file->songName}}</p>
                                                     </div>
                                                     <audio preload="auto" controls>
-                                                        <source src="/uploads/songs_and_cover_images/{{ $file->songFile }} ">
+                                                        <source src="{{url('storage/uploads/songs_and_cover_images/'.$file->songFile)}}">
+
                                                     </audio>
                                                 </div>
                                             </div>

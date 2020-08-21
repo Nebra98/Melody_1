@@ -17,8 +17,7 @@
                                         <div class="col-sm-3">
 
                                                 <div class="text-center">
-                                                    <img src="/uploads/avatar/{{ $user->avatar }}" class="avatar img-circle img-thumbnail" alt="avatar">
-
+                                                    <img src="{{url('storage/uploads/avatar/'.$user->avatar)}}" class="avatar img-circle img-thumbnail" alt="avatar" width="300" height="300">
                                                 </div>
 
 

@@ -6,8 +6,10 @@ use App\Album;
 use App\Photo;
 use App\User;
 use Auth;
+use Gate;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumsController extends Controller
 {
@@ -20,7 +22,8 @@ class AlbumsController extends Controller
     public function index()
     {
         $albums = Album::with('Photos')->get();
-        return view('albums.index')->with('albums', $albums);
+        $photos = Photo::all();
+        return view('albums.index')->with('albums', $albums)->with('photos', $photos);
     }
 
     /**
@@ -50,6 +53,8 @@ class AlbumsController extends Controller
         $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
         $image = $request->file('cover_image'); //sada
 
+        $file = $request->file('cover_image');
+
         // Get just the filename
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
         $imageName = time().time().'.'.$image->getClientOriginalExtension(); // sada
@@ -60,10 +65,11 @@ class AlbumsController extends Controller
         // Create new filenameToStore
         $filenameToStore = $filename . '_' . time() . '.' . $extension;
 
-        // Upload image
-        //$path = $request->file('cover_image')->storeAs('public/album_covers', $filenameToStore);
-        $target_path = public_path('/uploads/albums_photos/'); // sada
-        $image->move($target_path, $filenameToStore); // sada
+        Storage::disk('public')->putFileAs(
+            'uploads/albums_photos/',
+            $image,
+            $filenameToStore
+        );
 
         // Create album
         $album = new Album;
@@ -72,9 +78,17 @@ class AlbumsController extends Controller
         $album->cover_image = $filenameToStore;
         // $album->cover_image = $filename;;
 
-        $album->save();
 
-        return redirect('/albums')->with('success', 'Album created');
+        // $album->save();
+
+        if($album->save()){
+            $request->session()->flash('success', "Album " . $album->name . ' je uspještno kreiran');
+        }else{
+            $request->session()->flash('error', 'Došlo je do pogreške tokom kreiranja albuma!');
+        }
+
+
+        return redirect('/albums');
     }
 
     /**
@@ -123,8 +137,19 @@ class AlbumsController extends Controller
      */
     public function destroy(Album $album)
     {
-        $album->delete();
+        // $album->delete();
 
-        return redirect()->route('management.show',Auth::user());
+        if($album->delete()){
+            session()->flash('success', "Album " . $album->name . ' je uspješno izbrisan');
+        }else{
+            session()->flash('error', 'Došlo je do greške prilikom brisanja albuma - ' . $album->name . '!');
+        }
+
+        if(Gate::denies('delete-users')){
+            return redirect()->route('management.show',Auth::user());
+        }
+
+        return redirect()->route('admin.users.index');
+        // return redirect()->route('management.show',Auth::user());
     }
 }
