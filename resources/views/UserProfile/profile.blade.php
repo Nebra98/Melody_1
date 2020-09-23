@@ -21,9 +21,9 @@
                                                 </div>
 
                                                 <p class= "text-center social-media-links">
-                                <a href="{{$user->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="{{ $user->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="{{ $user->youtube}}" target="_blank"><i class="fa fa-youtube-square"></i></a>
+                                <a href="https://www.facebook.com/{{$user->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/{{ $user->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/{{ $user->youtube}}" target="_blank"><i class="fa fa-youtube-square"></i></a>
                             </p>
 
                                                 <div class="panel panel-default">
