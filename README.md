@@ -22,6 +22,8 @@
             
 8. Pokrenuti komandu: php artisan key:generate 
 
+9. Pokrenuti komandu: php artisan storage:link
+
 9. File baze podataka (hello.sql) koji se nalazi u folderu potrebno je importati u novonapravljenoj bazi podataka u phpmyadmin panelu
  
 10. Pokrenuti lokalni server
