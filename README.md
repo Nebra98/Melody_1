@@ -32,5 +32,3 @@ Podaci za logiranje kao admin user su:
 - email: admin@admin.com
 - pass: password
 
-
-Na projektu su radili: Hrvoje Ramljak, Luka Pervan, Branimir Bulić.
