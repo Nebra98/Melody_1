@@ -55,7 +55,6 @@
                                             <li><a href="{{ url('index') }}">Početna</a></li>
                                             <li><a class="active" href="{{ url('about') }}">O nama</a></li>
                                             <li><a href="{{ url('contact') }}">Kontakt</a></li>
-                                            <li><a href="doc/Vizija.pdf" target="_blank">Vizija</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -63,7 +62,7 @@
                             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="social_icon text-right">
                                     <ul>
-                                        <li><a href="https://github.com/Nebra98/Melody.git" target="_blank"> <i class="fa fa-github"></i> </a></li>
+                                        <li><a href="#" target="_blank"> <i class="fa fa-github"></i> </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -108,7 +107,7 @@
                         <h3>Melody</h3>
                         <p>Melody je platforma osmišljen s ciljem kako bi autori vlastitu glazbu promovirali online, na jednom mjestu.
                             Prije korištenja aplikacije, potrebno je prvo kreirati korisnički račun gumbom "Sign up", na <a href="{{ url('index') }}">početnoj stranici</a>.
-                            Trenutno na ovom projektu rade studenti treće godine preddiplomskog studija računarstva, fakulteta<a href="http://fsre.sum.ba/naslovnica/"> FSRE SUM.</a></p>
+                            Trenutno na ovom projektu rade studenti diplomskog studija računarstva, fakulteta<a href="https://fsre.sum.ba/"> FSRE SUM.</a></p>
                         <div class="signature">
                             <img src="img/about/signature.png" alt="">
                         </div>
@@ -141,8 +140,7 @@
                                 <li><a href="{{ url('index') }}">Početna</a></li>
                                 <li><a href="{{ url('about') }}">O nama</a></li>
                                 <li><a href="{{ url('contact') }}">Kontakt</a></li>
-                                <li><a href="doc/Vizija.pdf" target="_blank">Vizija</a></li>
-                                <li><a href="https://github.com/Nebra98/Melody.git" target="_blank"> <i class="fa fa-github"></i> </a></li>
+                                <li><a href="#" target="_blank"> <i class="fa fa-github"></i> </a></li>
                             </ul>
                         </div>
                     </div>
