@@ -1,12 +1,13 @@
 1. Što je potrebno: 
+    - instaliran composer
     - instaliran lokalni server npr. xampp
-    - instaliran phpadminpanel (mysql)
+    - instaliran phpadminpanel (mysql) (phpmyadmin dolazi predinstaliran sa xampp-om)
     
 2. Pokrenuti komandu: git clone https://github.com/Nebra98/Melody_1 , ili Download ZIP
     
 3. Nakon što ste preuzeli datoteku, potrebno je da se navigirate u nju preko terminala ili cmd-a
  
-4. Nakon što ste se navigirali potrebno je pokrenuti komandu: composer install (ili composer update)
+4. Nakon što ste se navigirali potrebno je pokrenuti komandu: composer update (ili composer install)
 
 5. Pokrenuti komandu: cp .env.example .env (ako koristite windows onda samo napravite kopiju .env.example u istom folderu i tu promijenite ime u .env)
 
