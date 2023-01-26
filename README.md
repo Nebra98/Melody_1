@@ -1,3 +1,5 @@
+Web aplikacija namijenjena za objavljivanje i slušanje glazbe.
+
 1. Što je potrebno: 
     - instaliran composer
     - instaliran lokalni server npr. xampp
